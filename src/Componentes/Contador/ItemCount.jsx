@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 
 const Counter = (props) => {
 
-    const [count, setCount] = useState(0);
+    const [count, setCount] = useState(1);
 
     const onAdd = (sign) => {
         if (sign === "Agregar" && count < props.max) setCount(count + 1)
@@ -17,7 +17,7 @@ const Counter = (props) => {
                 </div>
                 <div className="row">
                     <button class="btn btn-danger" title='Down' onClick={() => onAdd("Quitar")}><span role="img" aria-label="Minus">Quitar</span></button>
-                    <input  type="text" placeholder="0" value={count} />
+                    <input  type="text" placeholder="0" value={count} onChange={(event) => setCount(event.target.value)} />
                     <button class="btn btn-primary" title='Up' disabled={count===props.max} onClick={() => onAdd("Agregar")}><span role="img" aria-label="Plus">Agregar</span></button>
                 </div>
             </div>
