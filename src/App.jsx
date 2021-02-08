@@ -3,6 +3,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavbarComponent from './Componentes/Navbar/Navbar.jsx';
 import Productos from './Contenedor/ItemListContainer.jsx';
+import ItemDetailContainer from './Componentes/Items/ItemDetailContainer.jsx'
 
 
 const App = () => {
@@ -10,6 +11,7 @@ const App = () => {
     <>
     <NavbarComponent/>
     <Productos/>
+    <ItemDetailContainer/>
     </>
   );
 }
