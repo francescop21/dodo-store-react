@@ -1,29 +1,26 @@
+import * as React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Counter from '../Componentes/Contador/ItemCount.jsx';
+import productList from "../mocks/productList.js"
+import ItemList from "../Componentes/ItemList/ItemList.jsx";
 
-const Productos = () => {
-    const ofertas = () => {
-        alert("Ofertas");
-    }
+const ItemListContainer = ({ greeting }) => {
+        const [products, setProducts] = React.useState([]);
+
+        React.useEffect(() => {
+        const myPromise = new Promise((resolve, reject) => {
+            setTimeout(() => resolve(productList), 3000);
+    });
+
+    myPromise.then((result ) => setProducts(result));
+    }, []);
+
 return (
-    <>   
-    <h1>Nuestros productos</h1>
-    <button OnClick={ofertas}>Ver Ofertas</button>  
-    <div class="container">
-            <div class="row">
-                <div class="col-sm">
-                    Producto 1
-                </div>
-                <div class="col-sm">
-                    Producto 2
-                </div>
-                <div class="col-sm">
-                    Producto 3
-                </div>
+        <div>
+            <h2>{greeting}</h2>
+            <ItemList products={products}/>
         </div>
-</div>
-    </>   
-);
-}
+    );
+};
 
-export default Productos; 
+export default ItemListContainer; 
