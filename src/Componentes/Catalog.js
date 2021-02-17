@@ -6,6 +6,11 @@ import data from '../data';
 function Catalog(props) {
   console.log(props.match.params.id)  
   const product = data.products.find(x => x._id === props.match.params.id);
+
+  function onClick(evt) {
+      console.log('Clicked')
+  }
+
   return <div>
       <div className="back-home">
           <Link to="/">Volver</Link>
@@ -53,7 +58,8 @@ function Catalog(props) {
             </select>
         </li>
         <li>
-            <button className="button">Añadir al carrito</button>
+            <button onClick={onClick} className="button">Añadir al carrito</button>
+    
         </li>
     </ul>
     </div>
