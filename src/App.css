@@ -1,0 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Montserrat, sans-serif;
+}
+
+a {
+  color: #076917;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 1000px) {
+  .list-items {
+    flex-direction: column;
+  }
+}
