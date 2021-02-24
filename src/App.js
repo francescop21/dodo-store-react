@@ -1,28 +1,44 @@
-import logo from './logo.svg';
-import React from 'react';
-import {BrowserRouter, Route, Link} from 'react-router-dom';
-import data from './data';
 import './App.css';
-import ItemListContainer from './Componentes/ItemListContainer';
-import Catalog from './Componentes/Catalog';
-import Navbar from './Componentes/Navbar';
+import Navbar from './components/navbar';
+import Footer from './components/footer';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import ItemListContainer from './containers/itemlistcontainer';
+import ItemDetailContainer from './containers/itemdetailcontainer';
+import Cart from './components/cart';
+import CartProvider from './context/cartContext';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-function App() {
+
+
+
+
+function App() { 
 
   return (
-
-<BrowserRouter>    
-<div className="grid-container">
-        <Navbar></Navbar>
-            <main className="main">
-                <div className="content">
-                    <Route path="/product/:id" component={Catalog}/>
-                    <Route path="/" exact={true} component={ItemListContainer}/>
-                </div>
-            </main>
-        <footer className="footer"> Todos los derechos reservados</footer>
-</div>
-</BrowserRouter>
+    <CartProvider>
+      <BrowserRouter>
+        <header>
+          <Navbar/>
+        </header>
+        <section className="container-fluid">
+            <Switch>
+              <Route exact path="/">
+                <ItemListContainer/>
+              </Route>
+              <Route exact path="/category/:categoryId">
+                <ItemListContainer/>
+              </Route>
+              <Route exact path="/item/:itemId">
+                <ItemDetailContainer/>
+              </Route>
+              <Route exact path="/cart">
+                <Cart/>
+              </Route>
+            </Switch>
+        </section>
+        <Footer/>
+      </BrowserRouter>
+    </CartProvider>
   );
 }
 
