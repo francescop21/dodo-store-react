@@ -6,6 +6,7 @@ import ItemListContainer from './containers/itemlistcontainer';
 import ItemDetailContainer from './containers/itemdetailcontainer';
 import Cart from './components/cart';
 import CartProvider from './context/cartContext';
+import FirebaseProvider from './context/firebaseContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -15,6 +16,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function App() { 
 
   return (
+    <FirebaseProvider>
     <CartProvider>
       <BrowserRouter>
         <header>
@@ -39,6 +41,7 @@ function App() {
         <Footer/>
       </BrowserRouter>
     </CartProvider>
+    </FirebaseProvider>
   );
 }
 
